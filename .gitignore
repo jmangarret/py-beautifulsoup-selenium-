@@ -1,0 +1,30 @@
+# Entorno de Python
+*.pyc
+*.pyo
+__pycache__/
+env/
+venv/
+ENV/
+*.env
+
+# Archivos de configuración del entorno virtual
+.venv/
+.env/
+
+# Archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de caché y logs
+*.log
+*.cache
+
+# Archivos específicos de IDEs y editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+
+# Dependencias del proyecto (si se utilizan en archivos locales)
+# No es necesario si usas un archivo requirements.txt para manejar depend
