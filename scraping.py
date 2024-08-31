@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import time
 
 # URL inicial
 url_inicial = 'https://pangea.orange.es'
@@ -42,10 +43,13 @@ else:
 #
 # Paso 2: Enviar el formulario al segundo endpoint
 #
+time.sleep(3)  # Ajustar según sea necesario
 
-url_step2 = 'https://applogin.orange.es/oam-custom/pages/login.jsp'
+print("URL 2",response_login.url)
 
-response_step2 = requests.get(url_step2)
+# url_step2 = 'https://applogin.orange.es/oam-custom/pages/login.jsp'
+
+response_step2 = requests.get(response_login.url)
 
 # Encontrar el formulario de login
 form = soup.find('form')
@@ -58,9 +62,9 @@ login_data = {
 }
 
 # Extraer la URL de acción del formulario
-login_url = form['action']
+# login_url = form['action']
 # Realizar la solicitud POST para iniciar sesión
-response_step2 = requests.post(login_url, data=login_data, cookies=response.cookies)
+response_step2 = requests.post(response_login.url, data=login_data, cookies=response.cookies)
 
 # Validar si el status code es 200
 if response_step2.status_code == 200:
@@ -68,8 +72,10 @@ if response_step2.status_code == 200:
 else:
     print(f"Error en la solicitud 2 POST. Status code: {response_step2.status_code}")
 
-print("URL final 2 después de la redirección:", response_step2.url)
+time.sleep(3)  # Ajustar según sea necesario
+
+print("URL 3", response_step2.url)
 
 # Imprimir el contenido del response final
-print("Contenido del response final 2:")
-print(response_step2.text)
+# print("Contenido del response final 2:")
+# print(response_step2.text)
